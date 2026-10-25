@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f8">
+  <meta name="description" content="Studio Desk — реестр проектов, съёмок, задач и оплат для независимого продакшена.">
+  <meta name="color-scheme" content="light">
+  <title>Studio Desk — рабочее пространство</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Навигация">
+      <a class="brand" href="#overview" aria-label="Studio Desk — на главную">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-aperture"></span></span>
+        <span class="brand-copy"><strong>STUDIO DESK</strong><small>Рабочее пространство</small></span>
+      </a>
+      <div class="workspace"><span class="workspace-avatar">AK</span><span><strong>Коммерческий продакшен</strong><small>Фото / видео / производство</small></span></div>
+      <div class="nav-caption">РАБОЧЕЕ МЕСТО</div>
+      <nav id="navigation" class="main-nav">
+        <a href="#overview" data-page="overview" class="nav-item active"><span class="nav-icon">◫</span> Обзор</a>
+        <a href="#projects" data-page="projects" class="nav-item"><span class="nav-icon">▣</span> Проекты <span class="nav-count" id="navProjects"></span></a>
+        <a href="#shoots" data-page="shoots" class="nav-item"><span class="nav-icon">▦</span> Съёмки</a>
+        <a href="#tasks" data-page="tasks" class="nav-item"><span class="nav-icon">☑</span> Задачи <span class="nav-count" id="navTasks"></span></a>
+        <a href="#payments" data-page="payments" class="nav-item"><span class="nav-icon">◈</span> Оплаты</a>
+      </nav>
+      <div class="nav-caption second">СИСТЕМА</div>
+      <nav class="main-nav"><a href="#settings" data-page="settings" class="nav-item"><span class="nav-icon">⚙</span> Настройки и синхронизация</a></nav>
+      <div class="sidebar-bottom"><div class="privacy-indicator"><span class="pulse-dot"></span><span id="syncStatusShort">Данные на этом устройстве</span></div><small>Локально · без внешних библиотек</small></div>
+    </aside>
+    <div class="main-column">
+      <header class="topbar">
+        <div class="topbar-left"><button id="mobileMenu" class="icon-button menu-button" aria-label="Открыть меню">☰</button><span class="topbar-kicker">РАБОЧАЯ ПАНЕЛЬ</span><span class="divider-v"></span><span id="topDate">...</span></div>
+        <div class="topbar-right"><div class="save-state" id="saveState">Все изменения на этом устройстве</div><button id="globalAdd" class="button primary"><span aria-hidden="true">＋</span> Добавить</button></div>
+      </header>
+      <main id="app" tabindex="-1" aria-live="polite"></main>
+      <footer class="footer"><span>STUDIO DESK · v1.0</span><span>Источник данных: ручной ввод / импорт / приватный GitHub</span></footer>
+    </div>
+  </div>
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+  <dialog id="editorDialog" class="editor-dialog" aria-labelledby="editorTitle">
+    <form id="editorForm" method="dialog" novalidate>
+      <div class="dialog-top"><div><div class="eyebrow">STUDIO DESK</div><h2 id="editorTitle">Новая запись</h2></div><button type="button" id="closeDialog" class="icon-button" aria-label="Закрыть">✕</button></div>
+      <div id="editorFields" class="form-body"></div>
+      <div class="dialog-actions"><button type="button" class="button subtle" id="cancelDialog">Отмена</button><button type="submit" class="button primary">Сохранить</button></div>
+    </form>
+  </dialog>
+  <input id="importFile" type="file" accept=".json,application/json" hidden>
+  <script src="app.js" defer></script>
+</body>
+</html>
